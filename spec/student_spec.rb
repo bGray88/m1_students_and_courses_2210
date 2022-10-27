@@ -5,6 +5,12 @@ RSpec.describe Student do
     it 'exists' do
       student_1 = Student.new({name: "Morgan", age: 21})
 
+      expect(student_1).to be_instance_of(Student)
+    end
+
+    it 'creates student with name and age' do
+      student_1 = Student.new({name: "Morgan", age: 21})
+
       expect(student_1.name).to eq("Morgan")
       expect(student_1.age).to eq(21)
       expect(student_1.scores).to eq([])
