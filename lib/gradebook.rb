@@ -39,4 +39,12 @@ class Gradebook
       end
     end.join(", ")
   end
+
+  def students_in_grade_range(range)
+    @courses.map do |course, students| 
+      students.select do |student| 
+       range.include?(student.grade)
+      end
+    end.flatten.map {|student| student.name}.join(", ")
+  end
 end

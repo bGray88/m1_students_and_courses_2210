@@ -110,4 +110,28 @@ RSpec.describe Gradebook do
       expect(gradebook.all_grades).to eq("Calculus: Morgan 61.0, Calculus: Michelle 55.0, Biology: Jordan 75.0")
     end
   end
+
+  describe '#students_in_grade_range' do
+    it "list students in grade range" do
+      gradebook = Gradebook.new("Jim")
+      course1 = Course.new("Calculus", 2)
+      course2 = Course.new("Biology", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+      student3 = Student.new({name: "Michelle", age: 25})
+
+      course1.enroll(student1)
+      course2.enroll(student2)
+      course1.enroll(student3)
+
+      student1.log_score(75)
+      student2.log_score(81)
+      student3.log_score(92)
+
+      gradebook.add_course(course1)
+      gradebook.add_course(course2)
+
+      expect(gradebook.students_in_grade_range(70..85)).to eq("Morgan, Jordan")
+    end
+  end
 end
