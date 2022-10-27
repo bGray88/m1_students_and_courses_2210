@@ -17,6 +17,38 @@ RSpec.describe Gradebook do
     end
   end
 
+  describe '#add_course' do
+    it "can provide all students in courses collection" do
+      gradebook = Gradebook.new("Jim")
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+
+      course.enroll(student1)
+      course.enroll(student2)
+
+      gradebook.add_course(course)
+
+      expect(gradebook.courses).to be_instance_of(Hash)
+    end
+  end
+
+  describe '#list_courses' do
+    it "can provide all students in courses collection" do
+      gradebook = Gradebook.new("Jim")
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+
+      course.enroll(student1)
+      course.enroll(student2)
+
+      gradebook.add_course(course)
+
+      expect(gradebook.list_courses).to eq("Calculus")
+    end
+  end
+
   describe '#all_students' do
     it "can provide all students in courses collection" do
       gradebook = Gradebook.new("Jim")
@@ -29,7 +61,7 @@ RSpec.describe Gradebook do
 
       gradebook.add_course(course)
 
-      expect(gradebook.courses).to eq()
+      expect(gradebook.all_students).to eq([])
     end
   end
 end

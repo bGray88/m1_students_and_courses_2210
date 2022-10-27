@@ -14,8 +14,12 @@ class Gradebook
     @courses[course.name] += course.students
   end
 
+  def list_courses
+    @courses.keys.join(", ")
+  end
+
   def all_students
-    @courses.students
+    @courses.map {|course, students| students}
   end
 
   def below_grade(threshold)
