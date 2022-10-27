@@ -27,6 +27,7 @@ RSpec.describe Student do
 
       student_1.log_score(89)
       student_1.log_score(78)
+      expect(student_1.grade).to eq(83.5)
     end
   end
 end

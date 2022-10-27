@@ -15,7 +15,6 @@ class Student
   end
 
   def grade
-    @scores.sum
-    binding.pry
+    @scores.sum / 2.0
   end
 end
