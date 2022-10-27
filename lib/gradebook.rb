@@ -25,6 +25,10 @@ class Gradebook
   end
 
   def below_grade(threshold)
-    @courses.students.select {|student| student.grade < threshold}
+    @courses.map do |course, students| 
+      students.select do |student| 
+        student.grade < threshold
+      end
+    end.flatten.map {|student| student.name}.join(", ")
   end
 end
