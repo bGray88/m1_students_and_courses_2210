@@ -88,7 +88,7 @@ RSpec.describe Gradebook do
   end
 
   describe '#all_grades' do
-    it "can provide all students below grade threshold specified in list format" do
+    it "list students grade across all courses" do
       gradebook = Gradebook.new("Jim")
       course = Course.new("Calculus", 2)
       student1 = Student.new({name: "Morgan", age: 21})
