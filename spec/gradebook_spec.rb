@@ -65,7 +65,7 @@ RSpec.describe Gradebook do
     end
   end
 
-  describe '#all_students' do
+  describe '#below_grade' do
     it "can provide all students below grade threshold specified in list format" do
       gradebook = Gradebook.new("Jim")
       course = Course.new("Calculus", 2)
@@ -84,6 +84,28 @@ RSpec.describe Gradebook do
       gradebook.add_course(course)
 
       expect(gradebook.below_grade(70)).to eq("Morgan, Michelle")
+    end
+  end
+
+  describe '#all_grades' do
+    it "can provide all students below grade threshold specified in list format" do
+      gradebook = Gradebook.new("Jim")
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+      student3 = Student.new({name: "Michelle", age: 25})
+
+      course.enroll(student1)
+      course.enroll(student2)
+      course.enroll(student3)
+
+      student1.log_score(61)
+      student2.log_score(75)
+      student3.log_score(55)
+
+      gradebook.add_course(course)
+
+      expect(gradebook.all_grades).to eq("Morgan 61.0, Jordan 75.0, Michelle 55.0")
     end
   end
 end

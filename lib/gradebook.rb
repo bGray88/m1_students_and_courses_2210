@@ -31,4 +31,12 @@ class Gradebook
       end
     end.flatten.map {|student| student.name}.join(", ")
   end
+
+  def all_grades
+    @courses.map do |course, students| 
+      students.map do |student| 
+        "#{student.name} #{student.grade}"
+      end
+    end.join(", ")
+  end
 end
