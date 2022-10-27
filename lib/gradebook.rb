@@ -35,7 +35,7 @@ class Gradebook
   def all_grades
     students = @courses.map do |course, students| 
       students.map do |student| 
-        "#{student.name} #{student.grade}"
+        "#{course}: #{student.name} #{student.grade}"
       end
     end.join(", ")
   end

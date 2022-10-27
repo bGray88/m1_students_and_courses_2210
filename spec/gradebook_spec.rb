@@ -90,22 +90,24 @@ RSpec.describe Gradebook do
   describe '#all_grades' do
     it "list students grade across all courses" do
       gradebook = Gradebook.new("Jim")
-      course = Course.new("Calculus", 2)
+      course1 = Course.new("Calculus", 2)
+      course2 = Course.new("Biology", 2)
       student1 = Student.new({name: "Morgan", age: 21})
       student2 = Student.new({name: "Jordan", age: 29})
       student3 = Student.new({name: "Michelle", age: 25})
 
-      course.enroll(student1)
-      course.enroll(student2)
-      course.enroll(student3)
+      course1.enroll(student1)
+      course2.enroll(student2)
+      course1.enroll(student3)
 
       student1.log_score(61)
       student2.log_score(75)
       student3.log_score(55)
 
-      gradebook.add_course(course)
+      gradebook.add_course(course1)
+      gradebook.add_course(course2)
 
-      expect(gradebook.all_grades).to eq("Morgan 61.0, Jordan 75.0, Michelle 55.0")
+      expect(gradebook.all_grades).to eq("Calculus: Morgan 61.0, Calculus: Michelle 55.0, Biology: Jordan 75.0")
     end
   end
 end
