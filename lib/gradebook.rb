@@ -1,3 +1,6 @@
+require './lib/student'
+require './lib/course'
+
 class Gradebook
 
   attr_reader :instructor, :courses
@@ -8,7 +11,7 @@ class Gradebook
   end
 
   def add_course(course)
-    @course << course
+    @courses[course.name] += course.students
   end
 
   def all_students
