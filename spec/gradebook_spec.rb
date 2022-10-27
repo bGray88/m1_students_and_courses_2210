@@ -71,16 +71,19 @@ RSpec.describe Gradebook do
       course = Course.new("Calculus", 2)
       student1 = Student.new({name: "Morgan", age: 21})
       student2 = Student.new({name: "Jordan", age: 29})
+      student3 = Student.new({name: "Michelle", age: 25})
 
       course.enroll(student1)
       course.enroll(student2)
+      course.enroll(student3)
 
       student1.log_score(61)
       student2.log_score(75)
+      student3.log_score(55)
 
       gradebook.add_course(course)
 
-      expect(gradebook.below_grade(70)).to eq("Morgan")
+      expect(gradebook.below_grade(70)).to eq("Morgan, Michelle")
     end
   end
 end
