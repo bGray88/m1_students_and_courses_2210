@@ -61,7 +61,7 @@ RSpec.describe Gradebook do
 
       gradebook.add_course(course)
 
-      expect(gradebook.all_students).to eq([])
+      expect(gradebook.all_students).to eq("Morgan, Jordan")
     end
   end
 end

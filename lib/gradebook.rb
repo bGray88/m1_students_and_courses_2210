@@ -19,7 +19,9 @@ class Gradebook
   end
 
   def all_students
-    @courses.map {|course, students| students}
+    @courses.map do |course, students| 
+      students.map {|student| student.name}
+    end.join(", ")
   end
 
   def below_grade(threshold)
